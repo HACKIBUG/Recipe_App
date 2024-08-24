@@ -10,7 +10,7 @@ function IconCheckbox({ label, checked = false, onChange }) {
 
     return (
         <div onClick={toggleCheckbox} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-            {checked ? <FaCheckSquare size={20} color="orangered" /> : <FaSquare size={20} color="#757575" />}
+            {checked ? <FaCheckSquare size={20} color="orangered" /> : <FaSquare size={20} color="#000000" />}
             {label && <span style={{ marginLeft: '8px' }}>{label}</span>}
         </div>
     );

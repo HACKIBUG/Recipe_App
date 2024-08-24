@@ -3,7 +3,7 @@ import { CiPizza } from 'react-icons/ci';
 import { GiNoodles } from 'react-icons/gi';
 import { MdOutlineIcecream,MdSoupKitchen } from 'react-icons/md';
 import { FaBirthdayCake } from 'react-icons/fa';
-import IconCheckbox from './IconCheckbox';
+import IconCheckbox from '../components/IconCheckbox';
 import { fetchTabData } from '../service';
 
 function Tabs(props) {
@@ -93,35 +93,31 @@ function Tabs(props) {
             </div>
             <div className='recipe_banner'>
                 {tabData !== '' && (
-                    <>
-                        <div className='left-col'>
-                            <span className='badge'>{tabData.recipe.cuisineType[0].toUpperCase()}</span>
-                            <h1>{tabData.recipe.label}</h1>
-                            <p><strong>Recipe by:</strong><small>{tabData.recipe.source}</small></p>
-                            <h3>Ingredients</h3>
-                            <div className='ingredients'>
-                                <ul>
-                                    {tabData.recipe.ingredientLines.map((list, index) => (
-                                        <li key={index}>
-                                            <IconCheckbox
-                                                label={list}
-                                                checked={checkboxStates[index]}
-                                                onChange={(isChecked) => handleCheckboxChange(index, isChecked)}
-                                            />
-                                            &nbsp;
-                                        </li>
-                                    ))}
-                                </ul>
-                                
-                            </div>
-                            <button onClick={resetCheckboxes} className="resetbtn">Reset All</button>
+                        <><div className='left-col'>
+                        <span className='badge'>{tabData.recipe.cuisineType[0].toUpperCase()}</span>
+                        <h1>{tabData.recipe.label}</h1>
+                        <p><strong>Recipe by:</strong><small>{tabData.recipe.source}</small></p>
+                        <h3>Ingredients</h3>
+                        <div className='ingredients'>
+                            <ul>
+                                {tabData.recipe.ingredientLines.map((list, index) => (
+                                    <li key={index}>
+                                        <IconCheckbox
+                                            label={list}
+                                            checked={checkboxStates[index]}
+                                            onChange={(isChecked) => handleCheckboxChange(index, isChecked)} />
+                                        &nbsp;
+                                    </li>
+                                ))}
+                            </ul>
+
                         </div>
-                        <div className='right-col'>
+                        <button onClick={resetCheckboxes} className="resetbtn">Reset All</button>
+                    </div><div className='right-col'>
                             <div className='image-wrapper'>
                                 <img src={tabData.recipe.image} alt={tabData.recipe.label} />
                             </div>
-                        </div>
-                    </>
+                        </div></>
                 )}
             </div>
         </div>
