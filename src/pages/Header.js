@@ -15,6 +15,7 @@ const Header = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
+    adaptiveHeight:true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
   };
@@ -35,13 +36,6 @@ const Header = () => {
               <img
                 src={Pic2}
                 alt="Slide 2"
-                className="carousel-image"
-              />
-            </div>
-            <div>
-              <img
-                src={Pic3}
-                alt="Slide 3"
                 className="carousel-image"
               />
             </div>

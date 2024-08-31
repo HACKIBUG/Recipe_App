@@ -12,10 +12,12 @@ function App() {
 
   return (
        <>
-        <Navbar></Navbar>
+        <Navbar />
         <Header />
-         <Tabs selectedRecipe={selectedRecipe} setLoader={setLoader} />
-         <RecipeLists onRecipeSelect={setSelectedRecipe} setLoader={setLoader} />
+
+        <Tabs selectedRecipe={selectedRecipe} setLoader={setLoader} />
+        <RecipeLists onRecipeSelect={setSelectedRecipe} setLoader={setLoader} />
+        
         {loader && (
           <div className="loader">
             <div className="spinner"></div>

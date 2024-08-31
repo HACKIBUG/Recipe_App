@@ -10,6 +10,7 @@ function Tabs(props) {
     const [active, setActive] = useState('Pizza');
     const [tabData, setTabData] = useState('');
     const [checkboxStates, setCheckboxStates] = useState([]);
+    const [animatedTabs, setAnimatedTabs] = useState([]);
 
     const tabLabel = [
         {
@@ -23,7 +24,7 @@ function Tabs(props) {
             id: '048f908e28d9432e9249803845b47e4b'
         },
         {
-            name: "soup",
+            name: "Soup",
             icons: <MdSoupKitchen />,
             id: '331cbf7fccfb49d8ad95bd03350628ca'
         },
@@ -43,16 +44,23 @@ function Tabs(props) {
         if (props.selectedRecipe) {
             setTabData({ recipe: props.selectedRecipe });
             setCheckboxStates(props.selectedRecipe.ingredientLines.map(() => false)); // Reset checkboxes when recipe changes
-            console.log("Checkboxes reset on recipe change");
         } else {
             fetchTabData(tabLabel[0].id).then((response) => {
                 setTabData(response);
                 setCheckboxStates(response.recipe.ingredientLines.map(() => false)); // Initialize checkboxes
                 props.setLoader(false);
-                console.log("Checkboxes initialized on tab load");
             });
         }
-    }, [props.selectedRecipe]);
+
+
+    tabLabel.forEach((_, index) => {
+        setTimeout(() => {
+            setAnimatedTabs((prev) => [...prev, index]);
+        }, index * 500); 
+    });
+
+}, [props.selectedRecipe]);
+
 
     const handleClick = (name, id) => {
         setActive(name);
@@ -60,7 +68,6 @@ function Tabs(props) {
             setTabData(response);
             setCheckboxStates(response.recipe.ingredientLines.map(() => false)); // Reset checkboxes on tab change
             props.setLoader(false);
-            console.log("Checkboxes reset on tab change");
         });
     };
 
@@ -73,7 +80,6 @@ function Tabs(props) {
 
     const resetCheckboxes = () => {
         setCheckboxStates(tabData.recipe.ingredientLines.map(() => false));
-        console.log("Checkboxes manually reset");
     };
 
     return (

@@ -53,7 +53,7 @@ p{
   .logo{
     position: relative;
     cursor:pointer;
-    margin-left:30px;
+    
     .brand{
       font-size: 40px;
       color:floralwhite;
@@ -66,14 +66,14 @@ p{
  
 .carousel-container {
   margin-top:5px;
-  position: relative;
   width: 80%;  
   margin:0 auto;
+  position:relative;
   justify-content:center;
   margin-bottom:20px;
   .carousel-image {
       width: 100%;
-      height: 100vh;
+      height: auto;
       border-radius: 10px;
       margin:0 auto;
       transition: transform 0.5s ease-in-out;
@@ -96,7 +96,7 @@ p{
   justify-content: center;
   margin-bottom: 30px;
   .tablist{
-    width:140px;
+    width:150px;
     height: 80px;
     flex-direction: column;
     display:flex;
@@ -105,25 +105,29 @@ p{
     gap:2.5rem;
     position: relative;
     cursor: pointer;
+    padding:5px;
 
     @include medium{
-      height: 100px;
+      height: 130px;
     }
     @include default{
-      height: 120px;
+      height: 150px;
     }
-    
-    svg{
-      font-size: 35px;
-      @include medium{
-        font-size: 50px;
-      }
+    @include small{
+      height: 150px;
+    }
+    @include extra{
+      height: 150px;
+    }
+    svg {
+       font-size:35px; 
     }
     span{
-      font-size:14px;
+      font-size:16px;
       @include medium{
-        font-size:18px;
+        font-size:20px;
       }
+     
     }
     &.active{
       background-color: orangered;
@@ -256,6 +260,15 @@ p{
         object-fit: cover;
         @include medium {
           border-radius: 100%;
+          position:center;
+        }
+        @include extra{
+          border-radius:90% ;
+        }
+        @include small{
+          border-radius: 80%;
+          object-fit:cover;
+          postion:center;
         }
       }
     }
@@ -314,7 +327,7 @@ p{
   display:flex;
   flex-flow: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
   text-align: center;
   margin-bottom: 70px;
 
@@ -327,11 +340,17 @@ p{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
     
     @include small{  
-      width: calc(100% / 2 - 20px);
+      width: calc(100% / 2 - 30px);
     } 
     @include default{  
-      width: calc(100% / 4 - 20px);
+      width: calc(100% / 4 - 30px);
     } 
+    @include medium{
+      width:calc(100% / 4 - 40px);
+    }
+    @include extra{
+      width:calc(100% / 4 - 20px);
+    }
     .img-wrapper{
       margin: bottom 10px;
       img{
